@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.core.exceptions import ImproperlyConfigured
 import os
 import json
 
@@ -11,7 +12,7 @@ with open(secret_file) as f:
     secrets = json.loads(f.read())
 
 
-def get_secret(setting, secrets_dict=secrests):
+def get_secret(setting, secrets_dict=secrets):
     try:
         return secrets_dict[setting]
     except KeyError:
